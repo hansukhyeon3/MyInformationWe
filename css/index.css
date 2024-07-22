@@ -9,23 +9,23 @@ body {
     margin: 0;
 }
 .splash {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(145deg, #2a3439, #000000);;
-    position: fixed;
-    overflow: hidden;
+    position: fixed;/*스플래시 화면은 클라이언트 뷰에 보여햐하니 fixed로 고정해줌*/
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(145deg, #2a3439, #000000); 
+    overflow: hidden;/*자식이 화면 밖으로 나가도 스크롤이바가 생기지 않도록 hidden해줌*/
 }
 
 .splashCircle {
-    position: fixed;
+    position: fixed;/*다른 태그들에 간섭을 받지않고 가운데에 고정하기위해 fixed를 줌*/
     width: 150vmax;
     height: 150vmax;
     top: 50%;
     left: 50%;
-    background: white;
+    background: #8B4513;
     border-radius: 50%;
     transform: translate(-50%, -50%);/*요소에 초점이 왼쪽 상단이 기본이기때문에 왼쪽으로 50% 외쪽으로 50%가서 초점을 가운데로 옮김*/
-    animation: reducedCircle 3s forwards;
+    animation: reducedCircle 3.5s forwards;
     z-index: 2;
 }
 @keyframes reducedCircle {
@@ -52,9 +52,9 @@ body {
     width: 0;
     height: 0;
     transform: translate(-50%, -50%);
-    border-left: 125px solid transparent;
-    border-right: 125px solid transparent;
-    border-bottom: 250px solid #293133;
+    border-left: 125px solid transparent; /*삼각형*/
+    border-right: 125px solid transparent;/*삼각형*/
+    border-bottom: 250px solid #293133; /*삼각형*/
     z-index: 2;
 }
 .lampLine {
@@ -92,8 +92,8 @@ body {
     height: 700px;
     transform: translate(-50%, -50%);
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.3), transparent 100%);
+    clip-path: polygon(50% 1%, 50% 1%, 0 100%, 100% 100%); /* border색깔은 단색만 가능하기 때문에 그라데이션 효과를주고 위치를 지정해서 요소를 잘라줌*/
     z-index: 1;
-    clip-path: polygon(50% 1%, 50% 1%, 0 100%, 100% 100%);
     display: none;
 }
 .lightCircle {

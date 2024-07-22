@@ -61,7 +61,6 @@ function third(firstIndex, secondIndex, thirdIndex){
 function closeSplash(){
     document.addEventListener('keydown', function(event) {
         console.log('A key was pressed:', event.key);
-        // 여기에 원하는 동작을 추가하세요
         $('.splash').animate({'top' : '10%'}, 1000, 'easeOutCubic', function(){
             $('.splash').animate({'top' : '-100%'}, 300, 'linear', function(){
                 $('.splash').hide();
