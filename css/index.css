@@ -7,13 +7,16 @@ body {
     height: 100vh;
     padding: 0;
     margin: 0;
+    background: linear-gradient(180deg, #1C0C07, #2C1A12);
 }
 .splash {
     position: fixed;/*스플래시 화면은 클라이언트 뷰에 보여햐하니 fixed로 고정해줌*/
+    z-index: 2;
     width: 100vw;
     height: 100vh;
     background: linear-gradient(145deg, #2a3439, #000000); 
     overflow: hidden;/*자식이 화면 밖으로 나가도 스크롤이바가 생기지 않도록 hidden해줌*/
+    /* display: none; */
 }
 
 .splashCircle {
@@ -83,6 +86,11 @@ body {
     height: 10px;
     border-radius: 100%;
     background-color: #997417;
+    
+}
+.lampInternalOff{
+    transition: box-shadow 3s ease;
+    box-shadow: rgba(255, 255, 255, 0) 0 0 10px;
 }
 .light {
     position: absolute;
@@ -96,7 +104,7 @@ body {
     z-index: 1;
     display: none;
 }
-.lightCircle {
+.lightGround {
     position: absolute;
     transform: translate(-50%, -50%);
     left: 50%;
@@ -108,4 +116,119 @@ body {
     background-color: rgba(255, 255, 255, 0.3);
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
     display: none;
+}
+
+.splashLogo{
+    position: fixed;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    filter: blur(15px);
+}
+.splashLogoOnBlur {
+    transition: filter 3s ease;
+    filter: blur(10px);
+}
+.splashLogoOffBlur {
+    filter: blur(0);
+}
+
+/*-------------------------------------------------------------------------------------------------------------------*/
+.mainWrap {
+    position: relative;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    transition: filter 2s ease;
+    filter: blur(10px);
+}
+.mainWrapRemoveBlur {
+    filter: blur(0);
+}
+
+header {
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(145deg, #2a3439, #000000);
+    display: flex;
+    justify-content: center;
+    padding: 0 200px;
+    box-sizing: border-box;
+    box-shadow: rgba(153, 116, 23, 0) 0 10px 20px;
+    transition: box-shadow 3s ease;
+}
+.headerLogo {
+    position: relative;
+    width: 300px;
+    height: 100%;
+    background-color: transparent;
+    overflow: hidden;
+}
+.headerLogo img {
+    position: absolute;
+    top: -200px;
+    left: -100px;
+
+}
+
+.headerNav {
+    width: calc(100% - 300px);
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.mainmenu {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+}
+.mainmenu a {
+    position: relative;
+    display: block;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+}
+.mainmenu a span {
+    position: relative;
+    z-index: 3;
+}
+.bgLight {
+    position: absolute;
+    z-index: 2;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 100%;
+    background-color: #997417;
+    filter: blur(10px);
+    transition: width 1.5s ease-out;
+    transition: height 1.5s ease-out;
+}
+.mainmenu a:hover .bgLight {
+    width: 100%;
+    height: 100%;
+}
+.underline {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: calc(100% + 5px);
+    width: 0;
+    height: 5px;
+    border-radius: 5px;
+    background-color: white;
+    transition: width 1.5s ease-out;
+    box-shadow: white 0 0 10px;
+}
+.mainmenu a:hover .underline {
+    width: 100%;
 }
