@@ -106,3 +106,8 @@
  - 스플래시 화면은 캐시를 이용하여 하루에 한번만 보여줌
  - 웹 페이지 안에서 캐시 지우기 기능 
  - 웹 페이지 안에서 스플래시 화면 다시 보기 기능
+
+
+
+ cubic-bezier.com
+ https://designbase.co.kr/magazine/a-collection-of-web-design-friendly-websites/
