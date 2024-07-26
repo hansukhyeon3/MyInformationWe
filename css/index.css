@@ -46,7 +46,7 @@ body {
     }
     100%{
         width: 38vw;
-        height: 80vh;
+        height: 82vh;
         border-radius: 50px;
     }
 }
@@ -147,7 +147,7 @@ body {
     position: absolute;
     transform: translate(-50%, -50%);
     left: 20%;
-    top: 70%;
+    top: 76%;
     border-left: 350px solid transparent;
     width: 320px;
     height: 125px;
