@@ -41,7 +41,7 @@ function shorteningSplash(){
     $('.splashLogo').addClass('splashLogoMove');
     $('.lampBody').addClass('lampMove');
     $('.light').css('left', '50%');
-    $('.lightGround').css('left', '50%').css('top', '90%');
+    $('.lightGround').css('left', '50%').css('top', '91%');
     $('.splash').addClass('splashShortening');
 
     setTimeout(function(){
