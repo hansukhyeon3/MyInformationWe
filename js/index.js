@@ -1,5 +1,6 @@
 //웹페이지가 실행될때 시작하는 함수
 $(function(){
+    scrollOff();
     handleResize();
     const storageDate = localStorage.getItem('splashOnDate'); //캐시로 저장되어있던 날짜를 가져옴
     const currentDate = getDate(); // 현재 날짜를 가져옴
@@ -93,15 +94,28 @@ function startIndex(){
         }, 3000);
     }, 800);
 }
-//공부하기위해 임시로 만든 함수
 
+function scrollOff() {
+    $('.list').mouseover(function(){
+        $('body').css('overflow', 'hidden');
+    });
+    $('.list').mouseout(function(){
+        $('body').css('overflow', '');
+    });
+    $('.slideWrap').mouseover(function(){
+        $('body').css('overflow', 'hidden');
+    });
+    $('.slideWrap').mouseout(function(){
+        $('body').css('overflow', '');
+    });
+}
 
 window.addEventListener('resize', handleResize);
 function handleResize() {
 
-    var wrapHeight = $('.contentWrap').height();
-    var wrapWidth = $('.contentWrap').width();
-    $('.content').css('width', `${wrapWidth}`).css('height', `${wrapHeight}`)
+    var wrapHeight = $('.slideWrap').height();
+    var wrapWidth = $('.slideWrap').width();
+    $('.slideContent').css('width', `${wrapWidth}`).css('height', `${wrapHeight}`)
 }
 
 function setScrollAnimation() {
@@ -122,8 +136,9 @@ function setScrollAnimation() {
         animations: {
             //슬라이드의 애니메이션 설정
             sl1: [
-                { top: 500, bottom: 1900, styles: { opacity: [0, 1], translateY: [60, -60] } },
-                { top: 1400, bottom: 1900, styles: { opacity: [1, 0] } }
+                { top: 500, bottom: 1900, styles: { translateY: [60, -60] } },
+                { top: 500, bottom: 1200, styles: { opacity: [0, 1] } },
+                { top: 1200, bottom: 1900, styles: { opacity: [1, 0] } }
               ],
               sl2: [
                 { top: 1900, bottom: 3200, styles: { opacity: [0, 1], translateY: [60, -60] } },
@@ -155,18 +170,19 @@ function setScrollAnimation() {
               ]
         }
     }
-
-    const $container = $('.contentArea');
+    //contentArea 요소를 가져옴
+    const $container = $('.slidecontentArea');
+    //contentArea에 높이를 scrollAnimation에 정이된 높이만큼 바꿈
     $container.height(scrollAnimation.height);
-    $('.contentWrap').scrollTop(0);
-    $('.contentWrap').on('scroll', function(event) {
+    $('.slideWrap').scrollTop(0);
+    $('.slideWrap').on('scroll', function(event) {
         // 현재 스크롤 위치를 픽셀단위로 반환
-        var scrollPostitionTop = $('.contentWrap').scrollTop(); // 페이지에 상단 부분에서 부터 현재 화면에 페이지상단부분에 거리
+        var scrollPostitionTop = $('.slideWrap').scrollTop(); // 페이지에 상단 부분에서 부터 현재 화면에 페이지상단부분에 거리
         // $(window).height()는 내화면에 높이값(픽섹단위)
         // 현재 화면에 중앙값은 = 스크롤된 거리 + 내 화면에 반
         // $('.content').height()는 content에 높이
         // content안에서에 화면 중앙값 = content에서 스크롤된 거리 + content 높이에 반
-        var currentPos = scrollPostitionTop + $('.contentWrap').height() / 2;
+        var currentPos = scrollPostitionTop + $('.slideWrap').height() / 2;
         // scrollAnimation에 저장된 배열elements안에 저장된 sl1~sl8까지 반복함
         // refname은 sl1부터 sl8 까지 저장된 순서대로 저장됨
         for (const refname in scrollAnimation.elements) {
@@ -182,35 +198,34 @@ function setScrollAnimation() {
                 $el.addClass('enbled').removeClass('disabled');
                 //만약 애니메이션이 정의된 경우
                 if (animations) {
+                    // animation에 저장된 배열을 순회함
                     animations.forEach(animation => {
+                        // 현재 순회하고 있는 애니메이션 배열에 값을 가져옴
                         const { top, bottom, styles } = animation;
+                        // 현재 스크롤 위치가 가져온 값 사이에 있는지 확인
                         const isIn = currentPos >= top && currentPos <= bottom;
-                        
+                        // 현재 스크롤 위치가 가져온 값 사이에 있을경우
                         if (isIn) {
+                            // 진행률 = (현재위치 - 시작위치) / (종료위치 - 시작위치)
+                            // ex) (1000 - 500) / (1900 - 500) = 0.357....
                             const progress = (currentPos - top) / (bottom - top);
-
+                            // styles에 정의 된 배열을 순회함
                             for (const style in styles) {
+                                // 스타일에 정의된 css스타일을 가져옴
                                 const [startValue, endValue] = styles[style];
+                                // value = 0 + (1 - 0) * 0.357...
                                 const value = startValue + (endValue - startValue) * progress;
+                                //만약 현재 순회하고 있는 styles가 translateY라면
                                 if (style === 'translateY') {
                                     $el.css('transform', `translateY(${value}px)`);
                                 } else {
                                     $el.css(style , value);
                                 }
                             }
-                        }else {
-                            for (const style in styles) {
-                                const [startValue] = styles[style];
-                                const value = startValue + (endValue - startValue) * progress;
-                                if (style === 'translateY') {
-                                    $el.css('transform', `translateY(${startValue}px)`);
-                                } else {
-                                    $el.css(style, startValue);
-                                }
-                            }
                         }
                     });
                 }
+            // 범위 밖에 있으면 비활성화 함
             } else {
                 $el.addClass('disabled').removeClass('enbled');
             }

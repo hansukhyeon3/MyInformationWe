@@ -317,29 +317,31 @@ main {
     text-shadow: 0 0 15px rgba(255, 255, 255, 1);
     color: rgba(255, 255, 255, 1);;
 }
-.contentWrap {
-    width: 95%;
+.wrap {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.slideWrap {
+    width: 50%;
     height: calc(100vh - 260px);
-    margin: auto;
     background: rgba(255, 255, 255, 1);
+    box-shadow: inset rgba(0, 0, 0, 1) 0 0 10px 10px;
     border-radius: 15px;
     overflow: scroll;
     scrollbar-width: none;
 }
-.contentWrap::-webkit-scrollbar {
+.slideWrap::-webkit-scrollbar {
     width: 0;
     height: 0;
 }
-.contentWrap::-webkit-scrollbar-track {
+.slideWrap::-webkit-scrollbar-track {
     background: transparent;
 }
-.contentWrap::-webkit-scrollbar-thumb {
+.slideWrap::-webkit-scrollbar-thumb {
     background: transparent;
 }
-.contentArea {
-
-}
-.content {
+.slideContent {
     position: sticky;
     top: 0;
 }
@@ -355,9 +357,11 @@ main {
     position: absolute;
     z-index: 0;
     display: none;
+    
 }
 .slide.enbled {
     display: block;
+    opacity: 0;
 }
 
 .slideBigText p {
@@ -370,3 +374,66 @@ main {
     text-align: center;
 }
 
+.list {
+    width: 35%;
+    height: calc(100vh - 260px);
+    background: rgba(122, 122, 122, 1);
+    box-shadow: inset rgba(0, 0, 0, 1) 0 0 10px 10px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.listWrap {
+    width: calc(100% - 50px);
+    height: calc(100% - 27px);
+    overflow: scroll;
+    scrollbar-color: black;
+}
+.listTitle {
+    display: block;
+    width: 100%;
+    height: 80px;
+    border-bottom: 2px solid black;
+    line-height: 100px;
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: bold;
+    font-family: 'Roboto Mone', monospace;
+
+    /* background-color: white; */
+}
+.mainList {
+    margin-top: 20px;
+    list-style: none;
+}
+.mainList li {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 120px;
+    border-bottom: 2px solid rgb(100, 100, 100);
+
+}
+.mainList li img {
+    position: absolute;
+    top: 0;
+    width: 100px;
+    height: 100px;
+    margin-top: 10px;
+
+    background-color: white;
+}
+.mainList li p {
+    position: absolute;
+    width: calc(100% - 120px);
+    height: 100px;
+    left: 120px;
+    display: flex;
+    align-items: center;
+    color: black;
+    font-size: 1.1em;
+    font-family: 'Roboto Mone', monospace;
+
+    /* background-color: blueviolet; */
+} 
