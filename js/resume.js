@@ -1,12 +1,52 @@
 $(function(){
-    openBook();
+    $('.bookPage').eq(0).css('transform', 'rotateY(0deg) translateZ(1px)')
 });
 
-function openBook() {
-    $('.bookCover').click(function(){
-        $('.bookPage').css('transform', 'rotateY(-180deg)');
-    });
-    $('.bookResume').click(function(){
-        $('.bookPage').css('transform', 'rotateY(-180deg)');
-    }); 
-}
+var count = 0;
+$(document).on('click', '.leftMove', function(){
+    switch (count) {
+        case 1:
+            $('.book').css('left', '25%');
+            $(this).parent('.bookPage').css('transform', 'rotateY(0deg) translateZ(1px)'); 
+            break;
+        case 2:
+            $(this).parent('.bookPage').css('transform', `rotateY(0deg)`);
+
+            break;
+    }
+
+    $('.leftMove').removeClass('leftMove');
+    $('.rightMove').removeClass('rightMove');
+
+    count--;
+
+    $('.bookPage').eq(count).find('.page').eq(0).addClass('rightMove');
+    $('.bookPage').eq(count-1).find('.page').eq(1).addClass('leftMove'); 
+    
+    
+});
+$(document).on('click', '.rightMove', function(){
+    switch (count) {
+        case 0:
+            $('.book').css('left', '50%');
+            $(this).parent('.bookPage').css('transform', 'rotateY(-180deg)');
+            break;
+        case 1:
+            $(this).parent('.bookPage').css('transform', `rotateY(-180deg)`);       
+            break;
+        case 2:
+            $(this).parent('.bookPage').css('transform', `rotateY(-180deg)`);
+            break;
+    }
+
+    $('.leftMove').removeClass('leftMove');
+    $('.rightMove').removeClass('rightMove');
+
+    count++;
+
+    $('.bookPage').eq(count).find('.page').eq(0).addClass('rightMove');
+    $('.bookPage').eq(count-1).find('.page').eq(1).addClass('leftMove'); 
+
+    
+});
+
