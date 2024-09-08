@@ -137,7 +137,7 @@ body {
     font-weight: bold;
 }
 
-.bookPage > .bookResumePage1 {
+.bookResumePage1 {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -147,49 +147,170 @@ body {
 }
 .bookResumePage1 > .top {
     width: 100%;
-    height: 40%;
+    height: 35%;
 
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-
-    background-color: gray;
 }
 .bookResumePage1 > .top > .IdPhoto {
     width: 200px;
-    height: 280px;
+    height: 260px;
 
-    background-color: blue;
+    background-image: url(../imgs/증명사진.jpg);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border: 1px solid rgba(0, 0, 0, 1);
+
+    box-sizing: border-box;
 }
 .bookResumePage1 > .top > .information {
     width: 400px;
-    height: 280px;
-    padding-left: 20px;
+    height: 260px;
+    padding: 0 20px;
     box-sizing: border-box;
 
-    background-color: rgba(0, 0, 0, 1);
+    border: 1px solid rgba(0, 0, 0, 1);
 
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
-.bookResumePage1 > .top > .information p {
-    color: rgba(255, 255, 255, 1);
+.bookResumePage1 > .top > .information > .informationTitle {
+    font-size: 1.3em;
+    font-weight: bold;
+
+    border-bottom: 2px solid rgba(0, 0, 0, 1);
 }
-.bookResumePage1 > .top > .information > .sns {
-    width: calc(100% - 20px);
-    height: 50px;
+.information > article {
+    display: flex;
+    justify-content: start;
+}
+.bookResumePage1 > .mid {
+    width: 100%;
+    height: 35%;
+
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.mid > article {
+    width: 100%;
+    padding: 0 20px;
+
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.mid > article > p {
+    font-weight: bold;
+    font-size: 1.2em;
+
+    border-bottom: 1px solid rgba(0, 0, 0, 1);
+}
+.mid > article > div {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.education {
+    height: 35%;
+}
+.education > div > p:first-child {
+    width: 38%;
+}
+.education > div > p:nth-child(2) {
+    width: 38%;
+
+    text-align: center;
+}
+.education > div > p:last-child {
+    width: 28%;
+
+    text-align: right;
+}
+.license {
+    height: 65%;
+}
+.license > div > p:first-child {
+    width: 40%;
+}
+.license > div > p:nth-child(2) {
+    width: 20%;
+
+    text-align: center;
+}
+.license > div > p:last-child {
+    width: 40%;
+
+    text-align: right;
+}
+.skills {
+    width: 100%;
+    height: 30%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.skills > p {
+    width: 95%;
+    margin-bottom: 5px;
+
+    font-weight: bold;
+    font-size: 1.3em;
+
+    border-bottom: 1px solid rgba(0, 0, 0, 1);
+
+    box-sizing: border-box;
+}
+.skills > .chartIn {
+    width: 100%;
+    height: 70%;
+    
+    display: flex;
+    justify-content: space-around;
+    align-items: end;
+}
+.chartIn > div {
+    width: 41px;
+    
+    background-color: rgba(0, 0, 0, 1);
+}
+.chartIn > div:first-child {
+    height: 90%;
+}
+.chartIn > div:nth-child(2) {
+    height: 45%;
+}
+.chartIn > div:nth-child(3) {
+    height: 45%;
+}
+.chartIn > div:last-child {
+    height: 15%;
+}
+.skills > .chartOut {
+    width: 100%;
+    height: 5%;
+
+    border-top: 1px solid rgba(0, 0, 0, 1);
 
     display: flex;
     justify-content: space-around;
 }
-.bookResumePage1 > .top > .information > .sns > div > a {
+.chartOut > p {
     display: block;
-    width: 50px;
-    height: 50px;
-    overflow: hidden;
-    border-radius: 100%;
-    background-color: white;
+    width: 82px;
+
+    text-align: center;
 }
 
 .bookPage > .bookResumePage2 {
@@ -209,3 +330,4 @@ body {
     background-color: rgba(255, 255, 255, 1);
     color: black;
 }
+
