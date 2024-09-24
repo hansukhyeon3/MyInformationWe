@@ -1,4 +1,4 @@
-//웹페이지가 실행될때 시작하는 함수
+////웹페이지가 실행될때 시작하는 함수
 $(function(){
     scrollOff();
     handleResize();
@@ -88,7 +88,7 @@ function closeSplash(){
 function startIndex(){
     setTimeout(function(){
         $('.mainWrap').addClass('mainWrapRemoveBlur');
-        $('header').css('box-shadow' , 'rgba(153, 116, 23, 1) 0 10px 20px');
+        $('header').css('box-shadow' , '#ffffff 0 10px 20px');
         setTimeout(function(){
             setScrollAnimation();
         }, 3000);
@@ -129,9 +129,7 @@ function setScrollAnimation() {
             sl3: { top: 3300, bottom: 4600 },
             sl4: { top: 4700, bottom: 6000 },
             sl5: { top: 6100, bottom: 7300 },
-            sl6: { top: 7400, bottom: 8700 },
-            sl7: { top: 8800, bottom: 10100 },
-            sl8: { top: 10200, bottom: 11500 }
+            sl6: { top: 7400, bottom: 8700 }
         },
         animations: {
             //슬라이드의 애니메이션 설정
@@ -159,14 +157,6 @@ function setScrollAnimation() {
               sl6: [
                 { top: 7400, bottom: 8700, styles: { opacity: [0, 1], translateY: [60, -60] } },
                 { top: 8100, bottom: 8700, styles: { opacity: [1, 0] } }
-              ],
-              sl7: [
-                { top: 8800, bottom: 10100, styles: { opacity: [0, 1], translateY: [60, -60] } },
-                { top: 9550, bottom: 10100, styles: { opacity: [1, 0] } }
-              ],
-              sl8: [
-                { top: 10200, bottom: 11500, styles: { opacity: [0, 1], translateY: [60, 0] } },
-                { top: 10750, bottom: 11500, styles: { opacity: [1, 0] } }
               ]
         }
     }

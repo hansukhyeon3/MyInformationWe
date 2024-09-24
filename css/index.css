@@ -50,28 +50,6 @@ body {
     }
 }
 
-/* .splashCircle {
-    position: fixed; 다른 태그들에 간섭을 받지않고 가운데에 고정하기위해 fixed를 줌
-    width: 150vmax;
-    height: 150vmax;
-    top: 50%;
-    left: 50%;
-    background: #8B4513;
-    border-radius: 50%;
-    transform: translate(-50%, -50%); 요소에 초점이 왼쪽 상단이 기본이기때문에 왼쪽으로 50% 외쪽으로 50%가서 초점을 가운데로 옮김
-    animation: reducedCircle 3.5s forwards;
-    z-index: 2;
-}
-@keyframes reducedCircle {
-    0% {
-        width: 150vmax; 뷰포트에 높이와 너비중 큰값이 vmax, 뷰포트에 높이와 너비중 작은 값이 vmin
-        height: 150vmax;
-    }
-    100% {
-        width: 0;
-        height: 0;
-    }
-} */
 .splashLamp {
     position: relative;
     width: 100%;
@@ -200,10 +178,11 @@ body {
     z-index: 1;
     top: 0;
     left: 0;
+
     width: 100vw;
-    height: 200vh;
+    height: 100vh;
+
     transition: filter 2s ease;
-    background: linear-gradient(180deg, #1C0C07, #2C1A12);
     filter: blur(10px);
 }
 .mainWrapRemoveBlur {
@@ -211,18 +190,42 @@ body {
 }
 
 header {
+    position: relative;
+    z-index: 3;
+
     width: 100%;
-    height: 80px;
+    height: 100px;
+
     background: linear-gradient(145deg, #2a3439, #000000);
+    box-sizing: border-box;
+    box-shadow: #ffffff 0 10px 20px;
+    transition: box-shadow 3s ease;
+    
     display: flex;
     justify-content: center;
-    padding: 0 200px;
-    box-sizing: border-box;
-    box-shadow: rgba(153, 116, 23, 0) 0 10px 20px;
-    transition: box-shadow 3s ease;
 }
+.mainLogo {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.mainLogo a {
+    font-size: 4.7em;
+    font-weight: bold;
+    font-family: 'Roboto Mone', monospace;
+    text-decoration: none;
+    color: #ffffff;
+
+    /*text-shadow: 0 0 15px rgba(255, 255, 255, 1);
+    color: rgba(255, 255, 255, 1);*/
+}
+
 .headerLogo {
     position: relative;
+    
     width: 300px;
     height: 100%;
     background-color: transparent;
@@ -235,10 +238,13 @@ header {
 
 }
 
-.headerNav {
-    width: calc(100% - 300px);
-    height: 100%;
-    background-color: transparent;
+.mainNav {
+    position: relative;
+
+    width: 100%;
+    height: 100px;
+
+    background: #000000;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -297,26 +303,16 @@ header {
 
 main {
     position: relative;
-    width: 100%;
-    height: calc(100% - 150px);
+    z-index: 2;
+    top: 0;
+    
+    width: 100vw;
+    height: 100vh;
+
+    background: linear-gradient(145deg, #2a3439, #000000);
+    /*background: linear-gradient(180deg, #1C0C07, #2C1A12);*/
 }
-.mainLogo {
-    width: 100%;
-    height: 180px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.mainLogo a {
-    text-decoration: none;
-}
-.mainLogo p {
-    font-size: 5em;
-    font-weight: bold;
-    font-family: 'Roboto Mone', monospace;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 1);
-    color: rgba(255, 255, 255, 1);;
-}
+
 .wrap {
     display: flex;
     justify-content: space-around;
