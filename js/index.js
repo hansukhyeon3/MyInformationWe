@@ -2,6 +2,7 @@
 $(function(){
     scrollOff();
     handleResize();
+    menuOnOff();
     const storageDate = localStorage.getItem('splashOnDate'); //캐시로 저장되어있던 날짜를 가져옴
     const currentDate = getDate(); // 현재 날짜를 가져옴
 
@@ -88,11 +89,25 @@ function closeSplash(){
 function startIndex(){
     setTimeout(function(){
         $('.mainWrap').addClass('mainWrapRemoveBlur');
-        $('header').css('box-shadow' , '#ffffff 0 10px 20px');
         setTimeout(function(){
             setScrollAnimation();
         }, 3000);
     }, 800);
+}
+
+function menuOnOff() {
+    $(document).on('click', '.navBtn', function(){
+        $('.navOn').animate({'top' : '100px'}, 1000, function(){
+
+            $('.navOn').addClass('navOff');
+            $('.navOn').removeClass('navOn');
+        });
+        $('.navOff').animate({'top' : '200px'}, 1000, function(){
+
+            $('.navOff').addClass('navOn');
+            $('.navOff').removeClass('navOff');
+        });
+    });
 }
 
 function scrollOff() {
